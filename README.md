@@ -5,6 +5,7 @@ Exploratory data analysis in R of the [Body Performance](https://www.kaggle.com/
 ## Files
 - `bodyPerformance.csv`: the dataset
 - `analysis_draft.Rmd`: draft analysis
+- `simplescript.R`: group project script (data import and exploration)
 
 ## Run
 Open the `.Rmd` files in RStudio and run all chunks. Only base R is needed.
