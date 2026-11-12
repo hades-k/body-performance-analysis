@@ -18,7 +18,21 @@ sum(is.na(body))
 ```{r}
 body$gender <- as.factor(body$gender)
 body$class <- as.factor(body$class)
-attach(body)
+```
+
+```{r}
+sum(body$systolic == 0)    # blood pressure = 0
+sum(body$grip == 0)        # grip force = 0
+sum(body$jump == 0)        # broad jump = 0
+max(body$bend)             # 213 cm of flexibility: impossible
+```
+
+```{r}
+body_clean <- body[body$systolic > 0 & body$diastolic > 0 &
+                     body$grip > 0 & body$jump > 0 & body$bend < 100 & body$bend > 0, ]
+dim(body_clean)
+
+attach(body_clean)
 ```
 
 ## Categorical variables
@@ -26,6 +40,9 @@ attach(body)
 ```{r}
 table(gender)
 prop.table(table(gender))
+```
+
+```{r}
 barplot(table(gender), col=c('plum2','slateblue'), main='Gender')
 ```
 
@@ -38,19 +55,26 @@ table(gender, class)
 ## Quantitative variables
 
 ```{r}
-summary(body)
+summary(body_clean)
 ```
 
 ```{r}
 mean(height)
-sd(height)
-median(height)
+```
+
+```{r}
 hist(height, main='Height')
 boxplot(height, main='Height')
 ```
 
+`{sd(height)} median(height)`
+
 ```{r}
 boxplot(height~gender,col=c('plum2','slateblue'), main='Height by Gender')
+```
+
+```{r}
+
 ```
 
 ```{r}
@@ -63,13 +87,44 @@ summary(height[which(gender=='M')])
 ```
 
 ```{r}
-par(mfrow=c(2,2))
-hist(weight)
-hist(fat)
-hist(grip)
-hist(jump)
+par(mfrow=c(1,2))
+hist(weight, main = 'Weight distribution', xlab = 'Weight, kg')
+hist(fat, main = 'Body fat percentage distribution', xlab = 'BF%')
 ```
 
 ```{r}
-plot(height, weight, main='Height vs weight')
+```
+
+```{r}
+par(mfrow=c(1,2))
+hist(grip, main = 'Grip force distribution', xlab = 'Grip force, kg?')
+hist(jump, main = 'Jump length distribution', xlab = 'Jump length, cm')
+```
+
+```         
+```
+
+```{r}
+plot(fat, weight, main='body fat percentage vs weight')
+cor(fat, weight)
+```
+
+```{r}
+plot(weight,height, main='weight vs height')
+cor (weight, height)
+```
+
+```{r}
+plot(height, jump, main = 'height vs jump length')
+cor(height,jump)
+```
+
+```{r, fig.width=8, fig.height=8}
+par(mfrow=c(2,1))
+hist (fat[gender=='M'])
+hist (fat[gender=='F'])
+```
+
+```{r}
+print(body_clean[which.max(body_clean$fat), ])
 ```
