@@ -1,0 +1,98 @@
+---
+title: "Body Performance Analysis"
+output: html_notebook
+---
+
+## Import
+
+```{r}
+body <- read.csv("bodyPerformance.csv")
+names(body) <- c("age","gender","height","weight","fat","diastolic","systolic",
+                 "grip","bend","situps","jump","class")
+head(body)
+dim(body)
+str(body)
+sum(is.na(body))
+```
+
+```{r}
+body$gender <- as.factor(body$gender)
+body$class <- as.factor(body$class)
+attach(body)
+```
+
+## Categorical variables
+
+```{r}
+table(gender)
+prop.table(table(gender))
+barplot(table(gender), col=c('plum2','slateblue'), main='Gender')
+```
+
+```{r}
+table(class)
+pie(table(class), main='Class')
+table(gender, class)
+```
+
+## Quantitative variables
+
+```{r}
+summary(body)
+```
+
+```{r}
+mean(height)
+sd(height)
+median(height)
+hist(height, main='Height')
+boxplot(height, main='Height')
+```
+
+```{r}
+par(mfrow=c(2,2))
+hist(weight); hist(fat); hist(grip); hist(jump)
+```
+
+## Strange values
+
+```{r}
+sum(systolic==0)
+sum(diastolic==0)
+sum(jump==0)
+max(bend)
+boxplot(systolic, main='Systolic')
+```
+
+## Males vs females
+
+```{r}
+boxplot(height~gender, col=c('plum2','slateblue'), main='Height by gender')
+boxplot(grip~gender, col=c('plum2','slateblue'), main='Grip by gender')
+summary(grip[gender=='F'])
+summary(grip[gender=='M'])
+```
+
+## Class
+
+```{r}
+boxplot(situps~class, main='Sit-ups by class')
+boxplot(fat~class, main='Body fat by class')
+```
+
+## Relationships
+
+```{r}
+plot(height, weight, main='Height vs weight')
+cor(height, weight)
+plot(age, situps, main='Age vs sit-ups')
+cor(age, situps)
+```
+
+```{r}
+round(cor(body[,-c(2,12)]), 2)
+```
+
+```{r}
+detach(body)
+```
