@@ -11,14 +11,6 @@ par(mfrow = c(1, 1))   # reset
 
 
 
-# How many rows would be removed?
-summary(bp[, c("diastolic", "systolic")])
-sum(bp$systolic < 50 | bp$systolic > 370)
-sum(bp$diastolic < 30 | bp$diastolic > 250)
-sum(bp$systolic <= bp$diastolic)             #because systolic is always supposed to be higher than diastolic
-
-
-
 summary(bp[, c("diastolic", "systolic")])
 sum(bp$diastolic == 0)
 sum(bp$systolic == 0)
