@@ -32,7 +32,7 @@ max(body$bend)             # 213 cm of flexibility: impossible
 
 # Keep only the valid rows
 body_clean <- body[body$systolic > 0 & body$diastolic > 0 &
-                     body$grip > 0 & body$jump > 0 & body$bend < 100 & body$bend > 0, ]
+                     body$grip > 0 & body$jump > 0 & body$bend < 100 & body$bend > 0 & body$fat< 70, ]
 dim(body_clean)
 
 attach(body_clean)
