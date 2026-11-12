@@ -28,8 +28,15 @@ max(body$bend)             # 213 cm of flexibility: impossible
 ```
 
 ```{r}
-body_clean <- body[body$systolic > 0 & body$diastolic > 0 &
-                     body$grip > 0 & body$jump > 0 & body$bend < 100 & body$bend > 0, ]
+body$bmi <- body$weight / (body$height / 100)^2
+body_clean <- subset(body, systolic >= 70 & systolic <= 250 & 
+                       diastolic >= 50 & diastolic <= 150 & systolic > diastolic & 
+                       height >= 90 & height < 240 & 
+                       weight > 15 & weight < 225 & 
+                       bmi >= 5 & bmi < 90 & 
+                       grip > 0 & jump > 0 & 
+                       bend > -30 & bend < 100 & 
+                       fat >= 3 & fat < 60)
 dim(body_clean)
 
 attach(body_clean)
