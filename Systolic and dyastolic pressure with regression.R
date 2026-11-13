@@ -99,10 +99,10 @@ avg <- aggregate(cbind(systolic, diastolic) ~ age, data = body_clean, FUN = mean
 
 ggplot(avg, aes(x = age)) +
   geom_line(aes(y = systolic,  color = "Systolic"),  linewidth = 1) +
-  geom_line(aes(y = diastolic, color = "Dyastolic"), linewidth = 1) +
+  geom_line(aes(y = diastolic, color = "Diastolic"), linewidth = 1) +
   scale_color_manual(values = c("Systolic" = "red", "Diastolic" = "blue")) +
   labs(title = "Average pressure for Age",
-       x = "Age (years)", y = "Average pressure (mmHg)", color = "Prssure")
+       x = "Age (years)", y = "Average pressure (mmHg)", color = "Systolic", color = "Diastolic")
 
 #we could control how the correlation goes only from the late sixty since it seems the diastolic pressure 
 #gets higher but not the diastolic
