@@ -57,8 +57,18 @@ plot(grip, jump, xlab = 'Grip force (kg)', ylab = 'Broad jump (cm)',
      main = 'Scatterplot of jump against grip')
 cor(grip, jump)
 
+## is grip strength a good predictor? 
+
+plot(grip, situps, xlab = 'Grip force (kg)', ylab = 'Number of situps',
+     main = 'Scatterplot of situps against grip')
+cor(grip, situps)
+
+cor(fat,grip)
+cor(bend,grip)
+
 # Bonus: other relationships
 cor(fat, jump)
 cor(age, jump)
 
 detach(body_clean)
+

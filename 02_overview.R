@@ -6,22 +6,22 @@ attach(body_clean)
 
 summary(body_clean)
 
-########################
-## Gender             ##
-########################
+
+## Gender    
+
 table(gender)
 prop.table(table(gender))
 barplot(table(gender), col = c('plum2','slateblue'), main = 'Gender')
 
-########################
-## Class              ##
-########################
+
+## Class      
+
 table(class)
 pie(table(class), main = 'Class')
 
-#######################################################
-## HYPOTHESIS: gender and class                      ##
-#######################################################
+
+## HYPOTHESIS: gender and class          
+
 # H0: the distribution of the classes is the same for men and women
 # H1: men and women are not distributed in the same way among the classes
 

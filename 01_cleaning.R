@@ -24,8 +24,11 @@ max(body$bend)             # 213 cm of flexibility: impossible
 
 
 # Data cleaning   
+max(body$age)
 
 body$bmi <- body$weight / (body$height / 100)^2
+body$age_group <- cut(body$age, breaks = c(20, 30, 40, 50, 60, 70), right = FALSE,
+                      labels = c('20-29','30-39','40-49','50-59','60-69'))
 
 # (filtering criteria: Lu et al. 2020, see README)
 body_clean <- subset(body, systolic >= 70 & systolic <= 250 &
@@ -40,3 +43,4 @@ body_clean <- subset(body, systolic >= 70 & systolic <= 250 &
 nrow(body)                     
 nrow(body_clean)              
 nrow(body) - nrow(body_clean)   
+
