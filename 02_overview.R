@@ -13,6 +13,12 @@ table(gender)
 prop.table(table(gender))
 barplot(table(gender), col = c('plum2','slateblue'), main = 'Gender')
 
+par(mfrow=c(1,1))
+hist(age, main='Age')
+hist(age[gender=='M'], main='Age, men')
+hist(age[gender=='F'], main='Age, women')
+table(age_group)
+
 
 ## Class      
 

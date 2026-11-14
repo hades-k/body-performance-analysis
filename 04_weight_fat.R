@@ -11,10 +11,9 @@ summary(weight)
 summary(fat)
 
 par(mfrow = c(1, 2))  
-hist(weight, main = 'Weight distribution', xlab = 'Weight (kg)')
+hist(weight, main = 'Weight dist ribution', xlab = 'Weight (kg)')
 hist(fat, main = 'Body fat distribution', xlab = 'Body fat (%)')
 par(mfrow = c(1, 1))  
-
 
 ## Males vs females  
 

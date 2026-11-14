@@ -28,12 +28,17 @@ summary(height[gender == 'M'])
 
 ## Relationships     
 
-plot(weight, height, xlab = 'Weight (kg)', ylab = 'Height (cm)',
-     main = 'Weight vs height')
+plot(height, weight, xlab = 'Height  (cm)', ylab = 'Weight (kg)',
+     main = 'Height vs weight', col=ifelse(gender=='M', 'slateblue', 'plum2'))
+legend("topleft", legend = c("Male", "Female"),
+       col    = c("slateblue", "plum2"), pch    = 1)
 cor(weight, height)
 
 plot(height, jump, xlab = 'Height (cm)', ylab = 'Broad jump (cm)',
-     main = 'Height vs jump length')
+     main = 'Height vs jump length', 
+     col=ifelse(gender=='M', 'slateblue', 'plum2'))
+legend("topleft", legend = c("Male", "Female"),
+       col    = c("slateblue", "plum2"), pch    = 1)
 cor(height, jump)
 
 detach(body_clean)

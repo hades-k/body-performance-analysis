@@ -30,3 +30,6 @@ t.test(body_clean$grip[body_clean$age_group == "20-29"],
        body_clean$grip[body_clean$age_group == "30-39"])
 t.test(body_clean$grip[body_clean$age_group == "20-29"],
        body_clean$grip[body_clean$age_group == "40-49"])
+
+plot(situps~age_group, main = 'Situp count vs Age', xlab = 'Age Group', 
+     ylab = 'Number of Situps')
