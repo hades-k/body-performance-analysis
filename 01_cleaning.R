@@ -44,3 +44,8 @@ nrow(body)
 nrow(body_clean)              
 nrow(body) - nrow(body_clean)   
 
+summary(body_clean[situps==0,])
+summary(body_clean[!situps==0,])
+
+summary(body_clean[bend<0,])
+summary(body_clean[bend>0,])
