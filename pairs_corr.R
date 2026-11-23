@@ -10,11 +10,13 @@ age_cols <- c('20-29' = '#ffa600', '30-39' = '#ff5f66',
 gen_cols <- c('M'= 'steelblue', 'F'='plum2')
 
 
-pairs(~age+height+weight+fat+diastolic+systolic+grip+bend+situps+jump)
-pairs(~grip+bend+situps+jump, col=age_cols)
-pairs(~grip+bend+situps+jump, col=gen_cols)
+#pairs(~age+height+weight+fat+diastolic+systolic+grip+bend+situps+jump)
+pairs(~grip+bend+situps+jump, col=age_cols[as.character(body_clean$age_group)])
 
-pairs(~height+weight+fat+grip+bend+situps+jump, col=gen_cols)
+pairs(~grip+bend+situps+jump, col=gen_cols[as.character(body_clean$gender)])
+
+pairs(~height+weight+fat+grip+bend+situps+jump, 
+      col=gen_cols[as.character(body_clean$gender)])
 
 library(corrplot)
 num_vars <- c("age", "height", "weight", "fat", "diastolic", "systolic",

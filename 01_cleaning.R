@@ -49,3 +49,4 @@ summary(body_clean[!situps==0,])
 
 summary(body_clean[bend<0,])
 summary(body_clean[bend>0,])
+
