@@ -42,3 +42,20 @@ t.test(body_clean$grip[body_clean$age_group == "20-29"],
 
 plot(situps~age_group, main = 'Situp count vs Age', xlab = 'Age Group', 
      ylab = 'Number of Situps')
+
+gen_cols <- c('M'= 'steelblue', 'F'='plum2')
+
+#limiting number of outliers in these boxplots
+boxplot(fat ~ gender + age_group, col=gen_cols[levels(body_clean$gender)], 
+        las = 2, main = 'Body fat percentage by age and sex', ylab = 'BF%', 
+        range=3)
+boxplot(bmi ~ gender + age_group, col=gen_cols[levels(body_clean$gender)], 
+        las = 2, main = 'BMI by age and sex', ylab = 'BMI', range=3)
+
+#ignore below
+body_clean$FMI  <- body_clean$bmi * body_clean$fat / 100
+body_clean$FFMI <- body_clean$bmi * (1 - body_clean$fat / 100)
+
+boxplot(FFMI ~ gender:age_group)
+summary(lm(FFMI ~ age * gender))      # does lean mass fall with age?
+summary(lm(fat ~ age * gender + bmi))  # does BF% rise at the same BMI?
