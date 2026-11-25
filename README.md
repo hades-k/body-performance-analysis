@@ -65,12 +65,35 @@ Predicted vs actual on the test set (red line = perfect prediction). Grip and ju
 - `07_age_groups.R`: comparisons across age groups
 - `pairs_corr.R`: pair plots and correlation matrices (needs `corrplot`)
 - `regression.R`: regression with cross-validation
+- `obesity.R`: obesity by BMI vs by body fat, age-adjusted comparisons
 - `08_predictor_draft.R`: draft, not finished
 - `figures/`: plots used in this README
 - `grip_force_Bohannon2019.pdf`: reference for grip force
 - `old/`: old drafts
 
+
+## Obesity: BMI vs body fat
+Obese = BMI ≥ 25 (WHO Asia-Pacific), or body fat ≥ 21% for men / ≥ 37% for women (Kim et al.). The two definitions agree for 78% of people. Crossing them gives 4 groups. Differences are vs normal-normal, at the same age and gender:
+
+| Group | n | Systolic | Jump | Grip |
+|---|---|---|---|---|
+| normal-normal | 7943 | ref | ref | ref |
+| muscular (BMI ≥ 25, normal fat) | 1325 | +4.6 mmHg | +1.7 cm | +4.2 kg |
+| normal-weight obese (BMI < 25, high fat) | 1590 | +1.5 mmHg | −16.9 cm | −3.1 kg |
+| obese-obese | 2474 | +5.5 mmHg | −17.6 cm | +0.3 kg |
+
+- Fitness follows body fat: both high-fat groups jump ~17 cm less, whatever their BMI.
+- Blood pressure follows body size: BMI ≥ 25 adds ~5 mmHg even with normal fat.
+- BMI misses 17% of men (normal BMI but high body fat).
+
+![Obesity groups](figures/obesity_groups.png)
+
 ## Run
 The scripts run `01_cleaning.R` themselves. Base R only, except `corrplot` (correlations) and `ggplot2` (blood pressure script).
 
 Citation for filtering criteria: Lu Y, Huang C, Mahajan S, Schulz WL, Nasir K, Spatz ES, Krumholz HM. Leveraging the Electronic Health Records for Population Health: A Case Study of Patients With Markedly Elevated Blood Pressure. J Am Heart Assoc. 2020 Apr 7;9(7):e015033. doi: 10.1161/JAHA.119.015033. Epub 2020 Mar 23. PMID: 32200730; PMCID: PMC7428633.
+Citation for obesity criterias: 
+
+- body fat: Kim CH, Park HS, Park M, Kim H, Kim C. Optimal cutoffs of percentage body fat for predicting obesity-related cardiovascular disease risk factors in Korean adults. Am J Clin Nutr. 2011;94(1):34–39. doi:10.3945/ajcn.110.001867
+- bmi: WHO Western Pacific Region, IASO, IOTF. The Asia-Pacific Perspective: Redefining Obesity and Its Treatment. Sydney: Health Communications Australia; 2000.
+- bmi: Seo MH, Lee WY, Kim SS, et al. 2018 Korean Society for the Study of Obesity Guideline for the Management of Obesity in Korea. J Obes Metab Syndr. 2019;28(1):40–45. doi:10.7570/jomes.2019.28.1.40
