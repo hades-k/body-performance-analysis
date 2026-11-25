@@ -54,23 +54,6 @@ Predicted vs actual on the test set (red line = perfect prediction). Grip and ju
 
 ![Predicted vs actual, test set](figures/predicted_vs_actual.png)
 
-## Files
-- `bodyPerformance.csv`: the dataset
-- `01_cleaning.R`: import, rename columns, remove impossible values, add BMI and age groups
-- `02_overview.R`: summary, gender, age
-- `03_height.R`: height
-- `04_weight_fat.R`: weight and body fat
-- `05_blood_pressure.R`, `Systolic and dyastolic pressure with regression.R`: blood pressure
-- `06_performance.R`: grip, flexibility, sit-ups, broad jump
-- `07_age_groups.R`: comparisons across age groups
-- `pairs_corr.R`: pair plots and correlation matrices (needs `corrplot`)
-- `regression.R`: regression with cross-validation
-- `obesity.R`: obesity by BMI vs by body fat, age-adjusted comparisons
-- `08_predictor_draft.R`: draft, not finished
-- `figures/`: plots used in this README
-- `grip_force_Bohannon2019.pdf`: reference for grip force
-- `old/`: old drafts
-
 
 ## Obesity: BMI vs body fat
 Obese = BMI ≥ 25 (WHO Asia-Pacific), or body fat ≥ 21% for men / ≥ 37% for women (Kim et al.). The two definitions agree for 78% of people. Crossing them gives 4 groups. Differences are vs normal-normal, at the same age and gender:
@@ -87,6 +70,24 @@ Obese = BMI ≥ 25 (WHO Asia-Pacific), or body fat ≥ 21% for men / ≥ 37% for
 - BMI misses 17% of men (normal BMI but high body fat).
 
 ![Obesity groups](figures/obesity_groups.png)
+
+
+## Files
+- `bodyPerformance.csv`: the dataset
+- `01_cleaning.R`: import, rename columns, remove impossible values, add BMI and age groups
+- `02_overview.R`: summary, gender, age
+- `03_height.R`: height
+- `04_weight_fat.R`: weight and body fat
+- `05_blood_pressure.R`, `Systolic and dyastolic pressure with regression.R`: blood pressure
+- `06_performance.R`: grip, flexibility, sit-ups, broad jump
+- `07_age_groups.R`: comparisons across age groups
+- `pairs_corr.R`: pair plots and correlation matrices (needs `corrplot`)
+- `regression.R`: regression with cross-validation
+- `obesity.R`: obesity by BMI vs by body fat, age-adjusted comparisons
+- `08_predictor_draft.R`: draft, not finished
+- `figures/`: plots used in this README
+- `grip_force_Bohannon2019.pdf`: reference for grip force
+- `old/`: old drafts
 
 ## Run
 The scripts run `01_cleaning.R` themselves. Base R only, except `corrplot` (correlations) and `ggplot2` (blood pressure script).
